@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Čas běží 👀</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background: #111;
+      color: #fff;
+    }
+    #time {
+      font-size: 40px;
+      margin: 20px 0;
+    }
+    #message {
+      font-size: 20px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Kolik času už uběhlo ⏳</h1>
+<div id="time">...</div>
+<div id="message"></div>
+
+<script>
+  // 👇 nastav si svůj okamžik
+  const startTime = new Date("2026-03-18T12:00:00");
+
+  function updateTime() {
+    const now = new Date();
+    const diff = now - startTime;
+
+    const seconds = Math.floor(diff / 1000) % 60;
+    const minutes = Math.floor(diff / (1000 * 60)) % 60;
+    const hours = Math.floor(diff / (1000 * 60 * 60)) % 24;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    document.getElementById("time").innerText =
+      `${days} dní ${hours} h ${minutes} min ${seconds} s`;
+
+    // vtipné zprávy 😄
+    let message = "";
+
+    if (diff < 60000) {
+      message = "Tohle je zatím v pohodě 😎";
+    } else if (diff < 3600000) {
+      message = "Už bys měl asi něco dělat…";
+    } else if (diff < 86400000) {
+      message = "Tohle začíná být podezřelé 👀";
+    } else if (diff < 604800000) {
+      message = "Týden?! To už není sranda 😂";
+    } else {
+      message = "OK, tohle už je životní styl 💀";
+    }
+
+    document.getElementById("message").innerText = message;
+  }
+
+  setInterval(updateTime, 1000);
+  updateTime();
+</script>
+
+</body>
+</html>
