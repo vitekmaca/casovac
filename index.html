@@ -46,13 +46,13 @@
     // vtipné zprávy 😄
     let message = "";
 
-    if (diff < 60000) {
+    if (diff < 86400000) {
       message = "Tohle je zatím v pohodě 😎";
-    } else if (diff < 3600000) {
+    } else if (diff < 99900000) {
       message = "Už bys měl asi něco dělat…";
-    } else if (diff < 86400000) {
+    } else if (diff < 200000000 ) {
       message = "Tohle začíná být podezřelé 👀";
-    } else if (diff < 604800000) {
+    } else if (diff < 500000000) {
       message = "Týden?! To už není sranda 😂";
     } else {
       message = "OK, tohle už je životní styl 💀";
